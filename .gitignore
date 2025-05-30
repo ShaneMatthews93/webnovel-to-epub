@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environment
+venv/
+
+# IDE/Editor configs
+.vscode/
+.idea/
+
+# Playwright browser cache
+browser_data/
+
+# Output files
+*.epub
+output/
+
+# User-downloaded/book-specific data
+Books/
+
+# System files
+.DS_Store
+
+# Logs
+*.log
