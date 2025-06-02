@@ -1,9 +1,9 @@
 import requests
 
-def ask_llama(prompt, model='tinyllama'):
+def ask_llama(prompt, model='llama3'):
     
     response = requests.post(
-        "http://localhost:11434/api/generate",
+        "http://10.0.0.100:11434/api/generate",
         json={
             "model": model,
             "prompt": prompt,
@@ -17,10 +17,10 @@ def ask_llama(prompt, model='tinyllama'):
         print("Error: ", response.text)
         return None
     
-def extract_with_ai(html, model='tinyllama'):
+def extract_with_ai(html, model='llama3'):
     prompt = f"""
     You are an intelligent HTML parser. Your task is to extract the *title* and *main content* from a novel chapter's HTML page. Ignore navigation bars, ads, comments, or unrelated content.
-
+    You should extract the full chapter and not just an excerpt.
     Return the result in **exactly** this JSON format:
     {{
         'title': '...',
@@ -31,13 +31,12 @@ def extract_with_ai(html, model='tinyllama'):
     {html}
     
     """
-    response = ask_llama(prompt=prompt, model='tinyllama')
+    result = ask_llama(prompt=prompt, model=model)
     
-    try:
-        result = response.json().get('response', "").strip()
+    if result:
         print(result)
-    except Exception as e:
+        return result
+    else:
         print("Failed Ask Ollama Operation")
         return None
-    
     

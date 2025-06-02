@@ -15,7 +15,8 @@ def clean_html(html):
 
     return str(paragraphs)
 
-def fetch_chapter(url):
+def fetch_chapter():
+    url = 'https://novelbin.com/b/library-of-heavens-path/chapter-1'
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)  # headless=False helps solve captchas
         user_agents = [

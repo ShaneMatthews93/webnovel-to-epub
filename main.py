@@ -7,8 +7,9 @@ from src.ollama_fetch_chapter import fetch_chapter #delete after testing AI
 def main():
    
     #book_manager()
+    
     url = 'https://novelbin.com/b/library-of-heavens-path/chapter-1'
-    fetch_chapter(url)
+    fetch_chapter()
     
 if __name__ == "__main__":
     main()
